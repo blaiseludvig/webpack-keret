@@ -1,4 +1,7 @@
-
+.dark-mode {
+  color: white;
+  background-color: black;
+}
 @charset "UTF-8";
 /*!
  * Bootstrap  v5.2.1 (https://getbootstrap.com/)

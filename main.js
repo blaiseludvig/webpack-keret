@@ -7133,16 +7133,19 @@ var __webpack_exports__ = {};
 
 
 
+const body = document.querySelector("body");
 const input_url = document.querySelector("#url");
 const input_image_width = document.querySelector("#image-width");
 const input_border_width = document.querySelector("#border-width");
 const input_border_color = document.querySelector("#border-color");
 const image = document.querySelector("#image");
+const btn_darkmode = document.querySelector("#btn-darkmode");
 
 const url = () => input_url.value;
 const image_width = () => `${input_image_width.value}px`;
 const border_width = () => `${input_border_width.value}px`;
 const border_color = () => `${input_border_color.value}`;
+const darkmode = () => btn_darkmode.dataset.darkmode == 'true';
 
 
 function add_event_listeners() {
@@ -7160,6 +7163,15 @@ function add_event_listeners() {
 
   input_border_color.addEventListener("input", () => {
     image.style["border-color"] = border_color();
+  });
+
+  btn_darkmode.addEventListener("click", () => {
+    body.classList.toggle("dark-mode");
+    btn_darkmode.dataset.darkmode = !darkmode();
+    btn_darkmode.textContent = darkmode() ? "Light mode" : "Dark mode";
+    btn_darkmode.classList.remove("btn-dark", "btn-light");
+    btn_darkmode.classList.add(darkmode() ? "btn-light" : "btn-dark");
+
   });
 
 }
